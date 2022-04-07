@@ -1,288 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      /* Global Styles */
 
-/* Global Styles */
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      body {
+        padding: 40px 10%;
+        background: #f5f5f5;
+      }
 
-body {
-  padding: 40px 10%;
-  background: #f5f5f5;
-}
+      a {
+        text-decoration: none;
+      }
 
-a{
-  text-decoration: none;
-}
+      /* Container Styles */
+      .container {
+        display: flex;
+      }
+      .main-wrapper {
+        flex: 2;
+      }
+      .side-bar {
+        background: #ab904b;
+        flex: 1;
+        padding: 40px;
+        /* background-color: white; */
+      }
 
-/* Container Styles */
-.container {
-  display: flex;
-}
-.main-wrapper{
-  flex: 2;
-}
-.side-bar{
-  background: #ab904b;
-  flex: 1;
-  padding: 40px;
-  /* background-color: white; */
-}
+      .side-bar ul {
+        padding: 0 40px;
+        list-style: none;
+      }
 
-.side-bar ul{
-  padding: 0 40px;
-  list-style: none;
-}
+      .side-bar {
+        background: rgb(230, 230, 231);
+      }
 
-.side-bar{
-  background: rgb(230, 230, 231);
-}
+      @media only screen and (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+        .side-bar {
+          background: #ab904b;
+          color: white !important;
+        }
+        .side-bar a {
+          color: white !important;
+        }
+      }
 
+      /* Navigation Menu Styles */
 
-@media only screen and (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .side-bar{
-    background: #ab904b;
-    color: white !important;
-  }
-  .side-bar a{
-    color: white !important;
-  }
-}
+      nav.nav-menu {
+        width: 100%;
+        background-color: #ab904b;
+        padding: 10px;
+      }
 
+      nav.nav-menu ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size: clamp(0.8rem, 1.2vw, 2rem);
+      }
 
+      .nav-menu .nav-item {
+        padding: 15px;
+        transition: background-color 500ms ease-in-out;
+      }
 
-/* Navigation Menu Styles */
+      .nav-menu .nav-item:hover {
+        cursor: pointer;
+        background-color: #f5f5f54d;
+      }
 
-nav.nav-menu {
-  width: 100%;
-  background-color: #ab904b;
-  padding: 10px;
-}
+      .nav-menu .nav-item a {
+        text-decoration: none;
+        color: white;
+      }
 
-nav.nav-menu ul {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  font-size: clamp(.8rem, 1.2vw, 2rem); 
-}
+      /* Main Content Wrapper Styles */
+      .main-wrapper {
+        background: white;
+        padding: 40px;
+      }
 
-.nav-menu .nav-item {
-  padding: 15px;
-  transition: background-color 500ms ease-in-out;
-}
+      section {
+        margin-bottom: 60px;
+      }
 
-.nav-menu .nav-item:hover {
-  cursor: pointer;
-  background-color: #f5f5f54d;
-}
+      section.head,
+      section.youtube-embed {
+        text-align: center;
+      }
 
-.nav-menu .nav-item a{
-  text-decoration: none;
-  color: white;
-}
+      .button-link {
+        display: block;
+        margin: 20px 0 0 0;
+        padding: 10px 40px;
+        width: fit-content;
+        background: #ab904b;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s transform ease-in-out;
+      }
 
+      .button-link:hover {
+        transform: scale(1.05);
+      }
 
-/* Main Content Wrapper Styles */
-.main-wrapper {
-  background: white;
-  padding: 40px;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-section {
-  margin-bottom: 60px;
-}
+      h2 {
+        margin-bottom: 20px;
+      }
 
-section.head,
-section.youtube-embed {
-  text-align: center;
-}
+      p {
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5rem;
+      }
 
-.button-link {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 10px 40px;
-  width: fit-content;
-  background: #ab904b;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s transform ease-in-out;
-}
+      img {
+        max-width: 100%;
+      }
 
-.button-link:hover {
-  transform: scale(1.05);
-}
+      .two-col {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-h1 {
-  font-size: 34px;
-}
+      .two-col div {
+        width: 50%;
+      }
 
-h2 {
-  margin-bottom: 20px;
-}
+      @media only screen and (max-width: 900px) {
+        body {
+          padding: 0;
+        }
 
-p {
-  text-align: justify;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-}
+        .two-col {
+          flex-direction: column;
+        }
 
-img {
-  max-width: 100%;
-}
+        .two-col div {
+          width: 100%;
+        }
 
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
+        .main-wrapper {
+          padding: 5%;
+        }
+      }
+    </style>
+    <title>Pest-Proofing Your Home in the Winter | Guardian Pest</title>
+  </head>
 
-.two-col div {
-  width: 50%;
-}
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li class="nav-item"><a href="https://guardianpest.com/">Main</a></li>
+        <li class="nav-item">
+          <a href="https://goo.gl/maps/NE6xXDym6Jfhwni78">Maps</a>
+        </li>
+      </ul>
+    </nav>
 
-@media only screen and (max-width: 900px) {
-  body {
-    padding: 0;
-  }
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <section class="head">
+          <h1>Pest-Proofing Your Home in the Winter</h1>
+        </section>
 
-  .two-col {
-    flex-direction: column;
-  }
+        <section>
+          <p>
+            When you think of insects and pests, you might think they are more
+            common in the spring and summer time. While you might not be getting
+            eaten alive by mosquitoes in the winter, pests like cockroaches and
+            rodents will find a way to make it into your warm home. Pests and
+            rodents love finding shelter in the winter, and your home is the
+            perfect place for them to hide out as the temperatures drop.
+          </p>
+          <p>
+            Nobody wants creepy crawlers in their home no matter what season it
+            is, but in this blog, we’re specifically sharing ways for you to
+            pest-proof your home in the winter. Keep reading to learn how you
+            can keep rodents and insects out of your home to ensure a pest-free
+            winter!
+          </p>
+          <a
+            class="button-link"
+            href="https://guardianpest.com/pest-proofing-your-home-in-the-winter/"
+            >Read Pos</a
+          >
+        </section>
 
-  .two-col div {
-    width: 100%;
-  }
-
-  .main-wrapper {
-    padding: 5%;
-  }
-}
-   </style>
-  <title>Pest-Proofing Your Home in the Winter | Guardian Pest</title>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav class="nav-menu">
-    <ul>
-      <li class="nav-item"><a href="https://guardianpest.com/">Main</a></li>
-      <li class="nav-item"><a href="https://goo.gl/maps/NE6xXDym6Jfhwni78">Maps</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="container">
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <section class="head">
-        <h1>Pest-Proofing Your Home in the Winter</h1>
-      </section>
-
-      <section>
-          <p>When you think of insects and pests, you might think they are more common in the spring and summer time. While you might not be getting eaten alive by mosquitoes in the winter, pests like cockroaches and rodents will find a way to make it into your warm home. Pests and rodents love finding shelter in the winter, and your home is the perfect place for them to hide out as the temperatures drop.</p>
-          <p>Nobody wants creepy crawlers in their home no matter what season it is, but in this blog, we’re specifically sharing ways for you to pest-proof your home in the winter. Keep reading to learn how you can keep rodents and insects out of your home to ensure a pest-free winter!</p>
-          <a class="button-link"
-                href="https://guardianpest.com/pest-proofing-your-home-in-the-winter/">Read Pos</a>
-      </section>
-
-      <section>
+        <section>
           <h2>Keep Your Kitchen Clean</h2>
-          <p>Do you leave crumbs on the counter after your morning bagel pops out of the toaster? Food is one of the biggest ways to draw pests into your home. Keep your kitchen counters and dining room table clean by wiping them off after preparing and eating your food. Make sure any dirty dishes are cleared out of the sink each night and take your trash out regularly.</p>
-          <br>
+          <p>
+            Do you leave crumbs on the counter after your morning bagel pops out
+            of the toaster? Food is one of the biggest ways to draw pests into
+            your home. Keep your kitchen counters and dining room table clean by
+            wiping them off after preparing and eating your food. Make sure any
+            dirty dishes are cleared out of the sink each night and take your
+            trash out regularly.
+          </p>
+          <br />
           <h2>Enough with the Clutter!</h2>
-          <p>Clutter makes for a great hiding place for pests and rodents. We understand how busy the holiday season is and it might be tempting to leave wrapping paper and cardboard boxes sitting around, but try to stay organized and free of clutter as much as possible. Cardboard is a huge culprit for drawing pests into your home, so make sure you get rid of those empty boxes. If you’re packing up your summer clothes and storing them away in the winter, make sure you keep them in containers with a sealed lid rather than in a pile somewhere.</p>
-          <a class="button-link"
-                href="https://guardianpest.com/">Visit Us</a>
-      </section>
+          <p>
+            Clutter makes for a great hiding place for pests and rodents. We
+            understand how busy the holiday season is and it might be tempting
+            to leave wrapping paper and cardboard boxes sitting around, but try
+            to stay organized and free of clutter as much as possible. Cardboard
+            is a huge culprit for drawing pests into your home, so make sure you
+            get rid of those empty boxes. If you’re packing up your summer
+            clothes and storing them away in the winter, make sure you keep them
+            in containers with a sealed lid rather than in a pile somewhere.
+          </p>
+          <a class="button-link" href="https://guardianpest.com/">Visit Us</a>
+        </section>
 
-      <section>
+        <section>
           <h2>Check for Cracks</h2>
-          <p>While clutter and food can draw pests into your home, cracks in your windows and doors are basically a “welcome” sign for these creepy crawlers! Rodents, specifically mice, can enter through the tiniest crack or hole, even if it’s the size of a dime. Go around your house and check your windows, doors, and screens for any visible cracks or holes. Small holes in your window screens are the perfect place for outdoor bugs to find their way through. Installing a door sweep is also a great way to keep the bugs out. For all you energy-savers, it will also keep the heat in during the winter, saving you money on your utility bill.</p>
-          <br>
+          <p>
+            While clutter and food can draw pests into your home, cracks in your
+            windows and doors are basically a “welcome” sign for these creepy
+            crawlers! Rodents, specifically mice, can enter through the tiniest
+            crack or hole, even if it’s the size of a dime. Go around your house
+            and check your windows, doors, and screens for any visible cracks or
+            holes. Small holes in your window screens are the perfect place for
+            outdoor bugs to find their way through. Installing a door sweep is
+            also a great way to keep the bugs out. For all you energy-savers, it
+            will also keep the heat in during the winter, saving you money on
+            your utility bill.
+          </p>
+          <br />
           <h2>Fix Leaks</h2>
-          <p>Yes, leaks can cause pest infestations! If you were putting off that leaking pipe or dripping faucet in the summer and fall, now is the perfect time to have it fixed. It’s no surprise that standing water can cause mold, but do you know what else it attracts? Cockroaches. The last thing any homeowner wants is a cockroach infestation in their home, and these creepy crawlers love damp areas. While roaches aren’t the most dangerous pest, they multiply very quickly and can be difficult to get rid of if they aren’t addressed immediately. At Guardian Pest & Lawn, we offer high-quality and effective <a href="https://boomingbeast.com/guardianpest2/www.guardianpest.com/www.guardianpest.com/pest-control/roach-control/index.html">cockroach control services</a> that will keep the roaches away for good!</p>
-      </section>
+          <p>
+            Yes, leaks can cause pest infestations! If you were putting off that
+            leaking pipe or dripping faucet in the summer and fall, now is the
+            perfect time to have it fixed. It’s no surprise that standing water
+            can cause mold, but do you know what else it attracts? Cockroaches.
+            The last thing any homeowner wants is a cockroach infestation in
+            their home, and these creepy crawlers love damp areas. While roaches
+            aren’t the most dangerous pest, they multiply very quickly and can
+            be difficult to get rid of if they aren’t addressed immediately. At
+            Guardian Pest & Lawn, we offer high-quality and effective
+            <a
+              href="https://boomingbeast.com/guardianpest2/www.guardianpest.com/www.guardianpest.com/pest-control/roach-control/index.html"
+              >cockroach control services</a
+            >
+            that will keep the roaches away for good!
+          </p>
+        </section>
 
-      <section>
+        <section>
           <h2>Utah Pest Control</h2>
-          <p>Whether it’s mice, roaches, spiders, or ants, Guardian Pest & Lawn is the pest control company you can rely on! If you’re having issues with rodents or insects in your home this winter, give us a call at for effective, long-lasting pest control services. No one wants to deal with creepy crawlers in their homes, so, avoid the heebie-jeebies this winter by filling out our <a href="https://boomingbeast.com/guardianpest2/www.guardianpest.com/www.guardianpest.com/contact-us/index.html">online contact form</a> to get started with your pest control services today!</p>
-          <a class="button-link"
-                href="https://google.com/maps/?cid=11999470829608942653">Find Us Here!</a>
-      </section>
+          <p>
+            Whether it’s mice, roaches, spiders, or ants, Guardian Pest & Lawn
+            is the pest control company you can rely on! If you’re having issues
+            with rodents or insects in your home this winter, give us a call at
+            for effective, long-lasting pest control services. No one wants to
+            deal with creepy crawlers in their homes, so, avoid the
+            heebie-jeebies this winter by filling out our
+            <a
+              href="https://boomingbeast.com/guardianpest2/www.guardianpest.com/www.guardianpest.com/contact-us/index.html"
+              >online contact form</a
+            >
+            to get started with your pest control services today!
+          </p>
+          <a
+            class="button-link"
+            href="https://google.com/maps/?cid=11999470829608942653"
+            >Find Us Here!</a
+          >
+        </section>
 
-      <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12478029.697915308!2d-122.96949170722588!3d40.222541854041154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d84e623c1562b%3A0xa686af24c380bc3d!2sGuardian%20Pest%20Control!5e0!3m2!1sen!2sph!4v1649308591754!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Pest%20Control%20in%20Utah</iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12478029.697915308!2d-122.96949170722588!3d40.222541854041154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d84e623c1562b%3A0xa686af24c380bc3d!2sGuardian%20Pest%20Control!5e0!3m2!1sen!2sph!4v1649308591754!5m2!1sen!2sph"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            >Pest%20Control%20in%20Utah</iframe
+          >
+        </section>
 
-      <section>
-        <iframe src="https://www.deseret.com/utah" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.planetware.com/tourist-attractions/utah-usut.htm"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://guardianpest.com/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.deseret.com/utah"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.planetware.com/tourist-attractions/utah-usut.htm" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://guardianpest.com/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <!-- WEBSITE EMBED -->
+        <a
+          target="_bLank"
+          href="https://rank-fortress-digital-agency.github.io/guardianpest/"
+          >https://rank-fortress-digital-agency.github.io/guardianpest/</a
+        ><br />
+        <a
+          target="_bLank"
+          href="http://guardianpest.s3-website-ap-southeast-1.amazonaws.com/"
+          >http://guardianpest.s3-website-ap-southeast-1.amazonaws.com/</a
+        ><br />
+        <a target="_bLank" href="https://ornate-churros-ae81d1.netlify.app/"
+          >https://ornate-churros-ae81d1.netlify.app/</a
+        ><br />
 
-        <!-- MEDIA ROOM -->
+        <section>
+          <!-- WEBSITE EMBED -->
 
-        <!-- BUSINESS SITE -->
-       
-        <!-- PEARL TREES -->
-        
-        <!-- CLOUD STACK SITE -->
-        
-      </section>
+          <!-- MEDIA ROOM -->
 
+          <!-- BUSINESS SITE -->
+
+          <!-- PEARL TREES -->
+
+          <!-- CLOUD STACK SITE -->
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/GuardianPestControlUT/"
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://google.com/maps/?cid=11999470829608942653"
+                >Google Page</a
+              >
+            </li>
+            <li><a href="#">Youtube</a></li>
+            <li><a href="#">Pearltrees</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Google Site</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://guardianpest.com/">Main</a></li>
+            <li><a href="https://goo.gl/maps/NE6xXDym6Jfhwni78">Maps</a></li>
+            <li><a href="#">Media</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="side-bar">
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/GuardianPestControlUT/">Facebook</a></li>
-          <li><a href="https://google.com/maps/?cid=11999470829608942653">Google Page</a></li>
-          <li><a href="#">Youtube</a></li>
-          <li><a href="#">Pearltrees</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Google Site</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://guardianpest.com/">Main</a></li>
-          <li><a href="https://goo.gl/maps/NE6xXDym6Jfhwni78">Maps</a></li>
-          <li><a href="#">Media</a></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
